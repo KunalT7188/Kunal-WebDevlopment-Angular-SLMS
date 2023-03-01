@@ -1,0 +1,54 @@
+
+<app-header></app-header>
+<h1>Student List :</h1>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+       
+    <a class="navbar-brand" href="#">Logout</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button> 
+    </div>
+</nav>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Student ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Mobile No</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Birth Date</th>
+        <th scope="col">Branch</th>
+        <th scope="col">Admission Date</th>
+        <th scope="col">City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of student">
+        <td>{{s.id}}</td>
+        <td>{{s.sname|title:s.sgender}}</td>
+        <td>{{s.semail}}</td>
+        <td>{{s.spassword}}</td>
+        <td>{{s.sphone}}</td>
+        <td>{{s.sgender}}</td>
+        <td>{{s.birthDate|date:'dd/MM/yy'}}</td>
+        <td>{{s.branch}}</td>
+        <td>{{s.admissionDate|date:'dd/MM/yy'}}</td>
+        <td>{{s.address}}</td>
+        <td>
+            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" routerLink="/studentEdit/{{s.id}}">Edit</button>
+            <button type="button" class="btn btn-outline-danger" (click)="deleteStudent(s.id)">Delete</button>
+        </td> 
+
+      </tr>
+      
+    </tbody>
+  </table> 
+  </div>
+  <app-footer></app-footer>

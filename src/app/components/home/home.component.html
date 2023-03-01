@@ -1,0 +1,221 @@
+<app-header></app-header>
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addStaff" type="submit">Add Staff</button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addStudent" type="submit">Add Student</button>
+          </div>  
+        <a class="navbar-brand" href="#">Logout</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button> 
+        </div>
+    </nav>
+
+<!-- Add Staff modal -->
+<div class="modal fade" id="addStaff" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Staff</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <form  #myForm="ngForm" (ngSubmit)="myForm.form.valid&&addStaff()" novalidate>
+             <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name :</label>
+              <input type = "text" name="staffname" [(ngModel)]="staffadd.name" required #stdName="ngModel" maxlength="20"  class="form-control" />
+                        <i *ngIf="myForm.submitted&&stdName.errors?.['required']">****Name is required</i>
+             </div>
+             <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email :</label>
+              <input type="text" name="email" [(ngModel)]="staffadd.email" required #email="ngModel"  class="form-control"
+                        pattern="(^[a-z0-9._]+@staff.com$)" />
+                        <i *ngIf="myForm.submitted&&email.errors?.['required']">****Email is required</i>
+                        <i *ngIf="myForm.submitted&&email.errors?.['pattern']">*****Domain only @staff.com Are Allowed</i>  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Password :</label> 
+              <input type="text" name="password" [(ngModel)]="staffadd.password" value="{{genpassword}}" required
+               #password="ngModel" pattern="(^[a-z0-9._]+@staff$)" class="form-control" />
+               <i *ngIf="myForm.submitted&&password.errors?.['required']">****Password is required with @</i>
+               <i *ngIf="myForm.submitted&&password.errors?.['pattern']">*****@staff  Are Allowed</i>
+              <a   (click)="generatePassword()">Click for genrate password!</a>       
+            </div> 
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Mobile No :</label>
+              <input type="text" name="phone" [(ngModel)]="staffadd.phone" required #phone="ngModel"  class="form-control"
+                        pattern="(^[0-9]*$)" maxlength="10"/>
+                        <i *ngIf="myForm.submitted&&phone.errors?.['required']">****Mobile Number is required</i>
+                        <i *ngIf="myForm.submitted&&phone.errors?.['pattern']">*****Only Number is Acceptrd</i>  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Gender : </label>
+              <div class="form-control">
+                <input type="radio" name="Gender" value="Male" [(ngModel)]="staffadd.gender" required/> Male
+                <input type="radio" name="Gender" value="Female" [(ngModel)]="staffadd.gender" required/> Female 
+              </div>
+            
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Department :</label>
+              <select class="form-control" name="dept" [(ngModel)]="staffadd.dept" required #dept="ngModel">
+                <option> ---Select Option--- </option>
+                <option *ngFor="let dep of Department">{{dep}}</option>
+            </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Joining Date :</label>
+              <input type = "date" name="staffdoj" [(ngModel)]="staffadd.doj" required #staffdoj="ngModel"  class="form-control" />
+                        <i *ngIf="myForm.submitted&&staffdoj.errors?.['required']">****Date is required</i>
+             </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Fixed Salary/Month :</label>
+                <input type="text" name="salary" [(ngModel)]="staffadd.salary" required #salary="ngModel"  class="form-control"
+                        pattern="(^[0-9]*$)" maxlength="10" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Address :</label>
+                <input type = "text" name="staffcity" [(ngModel)]="staffadd.city" required #staffcity="ngModel" maxlength="10"  class="form-control" />
+                          <i *ngIf="myForm.submitted&&staffcity.errors?.['required']">****City is required</i>
+               </div>
+             <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit"  class="btn btn-primary" >Add-Staff</button>
+             </div>
+         </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+     <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Staff ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Gender</th>
+            <th scope="col">City</th>
+            <th scope="col">Department</th>
+            <th scope="col">Joining Date</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of staff">
+            <td>{{s.id}}</td>
+            <td>{{s.name|title:s.gender}}</td>
+            <td>{{s.email}}</td>
+            <td>{{s.password}}</td>
+            <td>{{s.phone}}</td>
+            <td>{{s.gender}}</td>
+            <td>{{s.city}}</td>
+            <td>{{s.dept}}</td>
+            <td>{{s.doj|date:'dd/MM/yy'}}</td>
+            <td>{{s.salary|currency:'INR'}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" routerLink="/Edit/{{s.id}}">Edit</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteStaff(s.id)">Delete</button>
+            </td> 
+
+          </tr>
+          
+        </tbody>
+      </table> 
+
+ <!-- Add Student modal -->
+<div class="modal fade" id="addStudent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Student</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <form  #my="ngForm" (ngSubmit)="my.form.valid&&addStudent()" novalidate>
+             <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"> Student Name :</label>
+              <input type = "text" name="sname" [(ngModel)]="stdadd.sname" required #sname="ngModel" maxlength="20"  class="form-control" />
+                        <i *ngIf="my.submitted&&sname.errors?.['required']">****Name is required</i>
+             </div>
+             <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Student Email :</label>
+              <input type="text" name="semail" [(ngModel)]="stdadd.semail" required #semail="ngModel"  class="form-control"
+              pattern="(^[a-z0-9._]+@slms.com$)" />
+                        <i *ngIf="my.submitted&&semail.errors?.['required']">****Email is required</i>
+                        <i *ngIf="my.submitted&&semail.errors?.['pattern']">*****Domain only @slms.com Are Allowed</i>  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Password :</label> 
+              <input type="text" name="spassword" [(ngModel)]="stdadd.spassword" value="{{sgenpassword}}" required
+               #spassword="ngModel" pattern="(^[a-z0-9._]+@slms$)" class="form-control" />
+               <i *ngIf="my.submitted&&spassword.errors?.['required']">****Password is required with @</i>
+               <i *ngIf="my.submitted&&spassword.errors?.['pattern']">*****@slms  Are Allowed</i>
+              <a   (click)="sgeneratePassword()">Click for genrate password!</a>       
+            </div> 
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Mobile No :</label>
+              <input type="text" name="sphone" [(ngModel)]="stdadd.sphone" required #sphone="ngModel"  class="form-control"
+                        pattern="(^[0-9]*$)" maxlength="10"/>
+                        <i *ngIf="my.submitted&&sphone.errors?.['required']">****Mobile Number is required</i>
+                        <i *ngIf="my.submitted&&sphone.errors?.['pattern']">*****Only Number is Acceptrd</i>  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Gender : </label>
+              <div class="form-control"> 
+                <input type="radio" name="Gender" value="Male" [(ngModel)]="stdadd.sgender" required/> Male
+                <input type="radio" name="Gender" value="Female" [(ngModel)]="stdadd.sgender" required/> Female 
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Birth Date :</label>
+                <input type = "date" name="stdbd" [(ngModel)]="stdadd.birthDate" required #stdbd="ngModel"  class="form-control" />
+                          <i *ngIf="my.submitted&&stdbd.errors?.['required']">****BirthDate is required</i>
+               </div>
+               <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Addmission Date :</label>
+                <input type = "date" name="stdad" [(ngModel)]="stdadd.admissionDate" required #stdad="ngModel"  class="form-control" />
+                          <i *ngIf="my.submitted&&stdad.errors?.['required']">****AdmissionDate is required</i>
+               </div>
+               
+            </div>
+            
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Branch&Year :</label>
+              <select class="form-control" name="br" [(ngModel)]="stdadd.branch" required #br="ngModel">
+                <option> ---Select Option--- </option>
+                <option *ngFor="let dep of branchyear">{{dep}}</option>
+            </select>
+            </div>
+           
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Address :</label>
+                <input type = "text" name="scity" [(ngModel)]="stdadd.address" required #scity="ngModel" maxlength="10"  class="form-control" />
+                          <i *ngIf="my.submitted&&scity.errors?.['required']">****City is required</i>
+               </div>
+             <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" routerLink="/List">Display Student</button>
+              <button type="submit"  class="btn btn-primary" data-bs-dismiss="modal" >Add-Student</button>
+             </div>
+         </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</div> 
+
+<app-footer></app-footer>

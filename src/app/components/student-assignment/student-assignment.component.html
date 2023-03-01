@@ -1,0 +1,73 @@
+<app-header></app-header>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" class="navbar-brand"> Assigment Assign to Student: </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+       
+    <a class="navbar-brand" href="#">Logout</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button> 
+    </div>
+</nav>
+<div class="modal-body">
+    <form  #my="ngForm" (ngSubmit)="my.form.valid&&editStudent()" novalidate>
+        <div class="mb-3">
+         <label for="exampleInputEmail1" class="form-label"> Student Name :</label>
+         <input type = "text" name="sname" [(ngModel)]="studentData.sname"   maxlength="20"[readOnly]="true"  class="form-control" />       
+        </div>
+        <div class="mb-3">
+         <label for="exampleInputEmail1" class="form-label">Student Email :</label>
+         <input type="text" name="semail" [(ngModel)]="studentData.semail"  #semail="ngModel" [readOnly]="true" class="form-control" />
+                 
+       </div>
+       <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Branch&Year :</label>
+        <input type = "text" name="branch" [(ngModel)]="studentData.branch" required  maxlength="20"[readOnly]="true"  class="form-control" />   
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"> Assignment Assign :</label>
+        <input type = "file" name="task" [(ngModel)]="studentData.task"   class="form-control" />       
+       
+       </div>
+       <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Technolgy to be used :</label>
+        <select class="form-control" name="technology" [(ngModel)]="studentData.technology" required #br="ngModel">
+          <option> ---Select Technology--- </option>
+          <option *ngFor="let tech of technology">{{tech}}</option>
+          </select>
+      </div>
+       <div class="mb-3">
+          <div class="mb-3">
+           <label for="exampleInputEmail1" class="form-label">Submission Date :</label>
+           <input type = "date" name="deadline" [(ngModel)]="studentData.deadline" required #deadline="ngModel"  class="form-control" />
+            <i *ngIf="my.submitted&&deadline.errors?.['required']">****Deadline is required</i>
+          </div>
+          <label for="exampleInputEmail1" class="form-label">Assignment Status : </label>
+         <div class="form-control"> 
+           <input type="radio" name="Status" value="Completed" [(ngModel)]="studentData.status" required/> Completed
+           <input type="radio" name="Status" value="Pending" [(ngModel)]="studentData.status" required/> Pending 
+         </div>
+         <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"> Total marks</label>
+            <input type = "text" name="marks" [(ngModel)]="studentData.marks" #marks="ngModel"  maxlength="2" pattern="(^[0-9]*$)"  class="form-control" />       
+                        <i *ngIf="my.submitted&&marks.errors?.['pattern']">*****Only Number is Accepted</i> 
+        </div>
+       </div>
+       <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Grade Obtain :</label>
+        <select class="form-control" name="grade" [(ngModel)]="studentData.grade"  #br="ngModel">
+          <option> ---Select Technology--- </option>
+          <option *ngFor="let grade of Grade">{{grade}}</option>
+          </select>
+      </div>
+       
+        <div >
+         <button type="submit"  class="btn btn-primary" data-bs-dismiss="modal" >Task Assign</button>
+        </div>
+       
+    </form>
+    
+</div>

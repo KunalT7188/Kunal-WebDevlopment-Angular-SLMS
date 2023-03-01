@@ -1,0 +1,94 @@
+{
+  "Regsistrations": [
+    {
+      "a_name": "Kunal T",
+      "a_email": "kunal@gmail.com",
+      "bod": "2022-12-23",
+      "a_gender": "Male",
+      "a_password": "2yydvej4@slms",
+      "a_address": "NAGPUR",
+      "a_phone": "9665090395",
+      "id": 1
+    },
+    {
+      "a_name": "Monika",
+      "a_email": "monika@gmail.com",
+      "a_gender": "Female",
+      "a_password": "etywpjvz@admin",
+      "a_address": "Mumbai",
+      "bod": "2023-01-27",
+      "a_phone": "1010101010",
+      "id": 2
+    },
+    {
+      "a_name": "Tanu",
+      "a_email": "tanu123@gmail.com",
+      "a_gender": "Female",
+      "a_password": "ntyrt6bb@admin",
+      "a_address": "Chimur",
+      "bod": "2023-02-06",
+      "a_phone": "1212121212",
+      "id": 3
+    }
+  ],
+  "Students": [
+    {
+      "sname": "Kunal T",
+      "semail": "kunal@slms.com",
+      "branch": "Elecrtonic-4year",
+      "birthDate": "2022-12-23",
+      "sgender": "Male",
+      "spassword": "2yydvej4@slms",
+      "address": "NAGPUR",
+      "admissionDate": "2022-12-29",
+      "sphone": "9665090395",
+      "id": 1,
+      "task": "C:\\fakepath\\Assignment1.pdf",
+      "technology": "Angular-Spring",
+      "deadline": "2023-01-25",
+      "status": "Completed",
+      "filesubmit": "C:\\fakepath\\Assignment_AnswerSheet1.pdf",
+      "subdate": "2023-02-06",
+      "marks": "99",
+      "grade": "A+"
+    },
+    {
+      "sname": "Divya",
+      "semail": "divya@slms.com",
+      "branch": "ComputerScience-4year",
+      "sgender": "Female",
+      "spassword": "2yydvej4@slms",
+      "address": "Pune",
+      "birthDate": "1996-10-14",
+      "admissionDate": "2022-04-03",
+      "sphone": "1212121212",
+      "id": 2
+    }
+  ],
+  "Staffs": [
+    {
+      "name": "Kunal",
+      "email": "kunal@staff.com",
+      "salary": "45000",
+      "dept": "Mechnaical",
+      "gender": "Male",
+      "password": "c1m4o2mn@staff",
+      "city": "Chimur",
+      "doj": "2022-12-29",
+      "phone": "9665090395",
+      "id": 1
+    },
+    {
+      "name": "Tanu",
+      "email": "tanu123@staff.com",
+      "salary": "42000",
+      "dept": "Chemical",
+      "gender": "Female",
+      "password": "9i875877@staff",
+      "city": "Chimur",
+      "doj": "2023-01-04",
+      "phone": "9665090395",
+      "id": 2
+    }
+  ]
+}

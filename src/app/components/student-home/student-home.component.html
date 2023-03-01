@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" class="navbar-brand" class="w3-large fa fa-home">Student Home</div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+       
+    <a class="navbar-brand" href="#" >Logout</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button> 
+    </div>
+</nav>
+<div>
+<div>
+  <table class="table table-hover">
+   
+    <tbody>
+      <tr>
+        <th >Check Assignment Allocated :</th>
+        <td>
+          <input type="search" [(ngModel)]="student.id" placeholder="Enter your student id"  pattern="(^[0-9]*$)" maxlength="2"> &nbsp;
+          <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" routerLink="/studentProgress/{{student.id}}">Search Task</button> 
+        </td> 
+        <th >Check Your Assigment Progress Result :</th>
+        <td>
+          <input type="search" [(ngModel)]="student.id" placeholder="Enter your student id"  pattern="(^[0-9]*$)" maxlength="2"> &nbsp;
+          <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" routerLink="/studentResult/{{student.id}}">Search Result</button> 
+        </td> 
+      </tr>
+      
+    </tbody>
+ 
+  </table> 
+  </div>
+  <!-- <div>
+    <img src="{{image}}" style="height:460px;width:1500px;">
+  </div> -->
+  <div>
+    <vg-player>
+      <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls height="460px" width="1500px">
+          <source src="/assets/robot.mp4" type="video/mp4">
+      </video>
+  </vg-player>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" class="navbar-brand"></div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div> 
+    <a class="navbar-brand" href="#">Logout</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button> 
+    </div>
+</nav>
+<div  class="bg-img">
+    <form class="container1">
+      
+      <label class="labelcolor"> Assignment Assign : </label>
+      <input type = "text" name="task" [(ngModel)]="studentData.task"    disabled="true" />       
+    
+      <label class="labelcolor">Technolgy to be used : </label>
+      <input type="text" name="technology" [(ngModel)]="studentData.technology" disabled="true"  >
+      
+      <label class="labelcolor"> Total Marks Obtain : </label> &nbsp;
+      <input type = "text" name="marks" [(ngModel)]="studentData.marks" required   disabled="true"   />       
+        
+      <label class="labelcolor">Grade Obtain: </label> &nbsp;
+      <input type="text" name="grade" [(ngModel)]="studentData.grade" disabled="true"  >
+        
+      <button class="btn btn-primary" onclick="window.print()">Download Report</button>
+    </form>
+    <form class="container">
+      <h3>Student Report Card :</h3>  
+      <label class="labelcolor"> Student Id : </label> &nbsp;
+      <input type = "text" name="id" [(ngModel)]="studentData.id"    disabled="true"/>       
+
+      <label class="labelcolor"> Student Name : </label> &nbsp;
+      <input type = "text" name="sname" [(ngModel)]="studentData.sname"    disabled="true"/>       
+
+      <label class="labelcolor">Student Email : </label> &nbsp;
+      <input type="text" name="semail" [(ngModel)]="studentData.semail" disabled="true">
+
+
+      <label class="labelcolor" >Branch&Year : </label> &nbsp;
+      <input type = "text" name="branch" [(ngModel)]="studentData.branch"  disabled="true" /> 
+
+
+      <label  class="labelcolor">Mobile No : </label> &nbsp;
+      <input type = "text" name="sphone" [(ngModel)]="studentData.sphone"   disabled="true" /> 
+      
+    </form>
+
+</div>
+

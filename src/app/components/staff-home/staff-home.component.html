@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          
+        
+            <div class="collapse navbar-collapse" class="form-group" >  
+             <input type="text" class="form-control " [(ngModel)]="searchBranch" (keyup)="search($event)" placeholder="Seach branch">
+             <i class="fa fa-search icon"> </i>  
+            </div> 
+  
+        <a class="navbar-brand" href="#">Logout</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            
+         </button> 
+        </div>
+    </nav>
+   
+      <!-- Student List -->
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Student ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Branch</th>
+            <th scope="col">Assigment Assign</th>
+            <th scope="col">Technology Used</th>
+            <th scope="col">Deadline Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Submmited File</th>
+            <th scope="col">Submmited Date</th>
+            <th scope="col">Total Marks</th>
+            <th scope="col">Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of student | searchfilter:searchkey:'branch'">
+            <td>{{s.id}}</td>
+            <td>{{s.sname|title:s.sgender}}</td>
+            <td>{{s.semail}}</td>
+            <td>{{s.branch}}</td>
+            <td><a href=" " download="{{s.task}}">{{s.task}}</a></td>
+            <td>{{s.technology}}</td>
+            <td>{{s.deadline|date:'dd/MM/YYYY'}}</td>
+            <td>{{s.status}}</td>
+            <td><a href=" " download="{{s.filesubmit}}">{{s.filesubmit}}</a></td>
+            <td>{{s.subdate|date:'dd/MM/YYYY'}}</td>
+            <td>{{s.marks}}</td>
+            <td>{{s.grade}}</td>
+            
+            
+            <td>
+                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" routerLink="/studenttask/{{s.id}}">Task Assign</button> 
+            </td> 
+    
+          </tr>
+          
+        </tbody>
+      </table> 
+   
+      <app-footer></app-footer>
+    

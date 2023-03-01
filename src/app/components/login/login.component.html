@@ -1,0 +1,97 @@
+<app-header></app-header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/StudentHome" class="w3-large fa fa-home" >Student Portal</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+   </button> 
+ 
+  </div>
+</nav>
+<div class="bg-img" >
+   <form [formGroup]="myForm" (ngSubmit)="Login()"  class="container">
+     <h3>Login Here</h3>
+ 
+     <label for="email"><b>Email : </b></label>
+     <input type="text"id="UserName" formControlName="UserName" required placeholder="Enter Email id"/>
+     <div *ngIf="myForm.controls['UserName'].errors?.['required']"> *****Email is Compulsory*****</div>
+     <i *ngIf="myForm.controls['UserName'].errors?.['pattern']" > *****Email is  in correct format @domain******</i>
+ 
+     <label for="psw"><b>Password : </b></label>
+     <input type="password"id="password" formControlName="password" require placeholder="Enter Password" />
+     <div *ngIf="myForm.controls['password'].errors?.['required']"> *****Password Compulsory*****</div>
+     
+     <button mat-stroked-button color="accent"  type="submit" [disabled]="myForm.invalid" class="btn">Login</button>
+     <br>
+     <br>
+     <label> Create New Account ? </label>&nbsp;
+     <a data-bs-toggle="modal" data-bs-target="#addAdmin" style="color: blue;">Click Here </a>
+     
+   </form>
+ 
+ </div>
+
+ <div class="modal fade" id="addAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registration Here</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <form  #my="ngForm" (ngSubmit)="my.form.valid&&Reg()" novalidate>
+             <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name :</label>
+              <input type = "text" name="sname" [(ngModel)]="admin.a_name" required #sname="ngModel" maxlength="20"  class="form-control" />
+                        <i *ngIf="my.submitted&&sname.errors?.['required']">****Name is required</i>
+             </div>
+             <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email :</label>
+              <input type="text" name="semail" [(ngModel)]="admin.a_email" required #semail="ngModel"  class="form-control"
+              pattern="(^[a-z0-9._]+@gmail.com$)" />
+                        <i *ngIf="my.submitted&&semail.errors?.['required']">****Email is required</i>
+                        <i *ngIf="my.submitted&&semail.errors?.['pattern']">*****Domain only @gmail.com Are Allowed</i>  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Password :</label> 
+              <input type="text" name="spassword" [(ngModel)]="admin.a_password" value="{{sgenpassword}}" required
+               #spassword="ngModel" pattern="(^[a-z0-9._]+@admin$)" class="form-control" />
+               <i *ngIf="my.submitted&&spassword.errors?.['required']">****Password is required with @</i>
+               <i *ngIf="my.submitted&&spassword.errors?.['pattern']">*****@admin  Are Allowed</i>
+              <a   (click)="sgeneratePassword()">Click for genrate password!</a>       
+            </div> 
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Mobile No :</label>
+              <input type="text" name="sphone" [(ngModel)]="admin.a_phone" required #sphone="ngModel"  class="form-control"
+                        pattern="(^[0-9]*$)" maxlength="10"/>
+                        <i *ngIf="my.submitted&&sphone.errors?.['required']">****Mobile Number is required</i>
+                        <i *ngIf="my.submitted&&sphone.errors?.['pattern']">*****Only Number is Acceptrd</i>  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Gender : </label>
+              <div class="form-control"> 
+                <input type="radio" name="Gender" value="Male" [(ngModel)]="admin.a_gender" required/> Male
+                <input type="radio" name="Gender" value="Female" [(ngModel)]="admin.a_gender" required/> Female 
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Birth Date :</label>
+                <input type = "date" name="stdbd" [(ngModel)]="admin.bod" required #stdbd="ngModel"  class="form-control" />
+                          <i *ngIf="my.submitted&&stdbd.errors?.['required']">****BirthDate is required</i>
+               </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Address :</label>
+                <input type = "text" name="scity" [(ngModel)]="admin.a_address" required #scity="ngModel" maxlength="30"  class="form-control" />
+                          <i *ngIf="my.submitted&&scity.errors?.['required']">****Address is required</i>
+               </div>
+             <div class="modal-footer">
+              <button type="submit"  class="btn btn-primary" data-bs-dismiss="modal" >Register</button>
+             </div>
+            </div>
+         </form>
+    
+      </div>
+      
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

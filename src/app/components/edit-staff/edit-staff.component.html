@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+       
+    <a class="navbar-brand" href="#">Logout</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button> 
+    </div>
+</nav>
+   <h2>Edit Staff Deatils:</h2>
+        <div class="modal-body">
+
+          <form  #myForm="ngForm" (ngSubmit)="myForm.form.valid&&editStaff()" novalidate>
+            <div class="mb-3">
+             <label for="exampleInputEmail1" class="form-label">Name :</label>
+             <input type = "text" name="stdName" [(ngModel)]="staffData.name" required #stdName="ngModel" maxlength="20" readonly  class="form-control" />
+                       <i *ngIf="myForm.submitted&&stdName.errors?.['required']">****Name is required</i>
+            </div>
+            <div class="mb-3">
+             <label for="exampleInputEmail1" class="form-label">Email :</label>
+             <input type="text" name="email" [(ngModel)]="staffData.email" required #email="ngModel" readonly class="form-control"
+                       pattern="(^[a-z0-9._]+@staff.com$)" />
+                       <i *ngIf="myForm.submitted&&email.errors?.['required']">****Email is required</i>
+                       <i *ngIf="myForm.submitted&&email.errors?.['pattern']">*****Correct Email format Are Allowed</i>  
+           </div>
+           <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Department :</label>
+            <select class="form-control" name="dept" [(ngModel)]="staffData.dept" required #dept="ngModel">
+              <option> ---Select Option--- </option>
+              <option *ngFor="let dep of Department">{{dep}}</option>
+          </select>
+          </div>
+           <div class="mb-3">
+               <label for="exampleInputEmail1" class="form-label">Salary :</label>
+               <input type="text" name="salary" [(ngModel)]="staffData.salary" required #salary="ngModel"  class="form-control"/>
+             </div>
+            <div>
+             <button type="submit"  class="btn btn-primary" data-bs-dismiss="modal">Edit-Staff</button>
+            </div>
+        </form>
+
+        </div>
+   <app-footer></app-footer>

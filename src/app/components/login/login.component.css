@@ -1,0 +1,61 @@
+.main-div mat-card{
+    padding: 0px;
+}
+.login-form{
+    padding: 20px;
+}
+
+body, html {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .bg-img {
+  
+    background-image: url('/assets/studenthome.jpg');
+    min-height: 580px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+ 
+  .container {
+    position: absolute;
+    right: 0;
+    margin: 40px;
+    max-width: 500px;
+    padding: 50px;
+    background-color: rgb(146, 133, 133);
+  }
+  
+ 
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }

@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" class="navbar-brand">Assigment Allocated :</div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">  </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+       
+    <a class="navbar-brand" href="#">Logout</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button> 
+    </div>
+</nav>
+<div class="modal-body">
+    <form  #my="ngForm" (ngSubmit)="my.form.valid&&editStudent()" novalidate>
+      <div class="mb-3"></div>
+        <div class="mb-3">
+         <label for="exampleInputEmail1" > Student Name :</label>
+         <input type = "text" name="sname" [(ngModel)]="studentData.sname" required  maxlength="20" disabled="true"   />       
+         &nbsp; &nbsp;
+         <label for="exampleInputEmail1" >Student Email :</label>
+         <input type="text" name="semail" [(ngModel)]="studentData.semail" required #semail="ngModel" disabled="true"  >
+         &nbsp; &nbsp;
+        <label for="exampleInputEmail1" class="form-label">Branch&Year :</label>
+        <input type = "text" name="branch" [(ngModel)]="studentData.branch" required  maxlength="20" disabled="true"    /> 
+        &nbsp; &nbsp;
+        <label for="exampleInputEmail1" class="form-label">Assigment Deadline Date :</label>
+           <input type = "date" name="deadline" [(ngModel)]="studentData.deadline" required #deadline="ngModel" disabled="true"  />
+             
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"> Assignment Assign :</label>
+        <a href=" " download="{{studentData.task}}" class="form-control">{{studentData.task}}</a>
+        <!-- <input type = "text" name="task" [(ngModel)]="studentData.task"   maxlength="50"  disabled="true" class="form-control" />        -->
+       </div>
+       <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Technolgy to be used :</label>
+        <select class="form-control" name="technology" [(ngModel)]="studentData.technology" disabled="true"  #br="ngModel">
+          <option> ---Select Technology--- </option>
+          <option *ngFor="let tech of technology" >{{tech}}</option>
+          </select>
+      </div>
+       <div class="mb-3">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"> Submitted File :</label>
+          <input type = "file" name="filesubmit" [(ngModel)]="studentData.filesubmit"   maxlength="50"   class="form-control" />
+                
+         </div>
+         <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Submitted  Date :</label>
+          <input type = "date" name="subdate" [(ngModel)]="studentData.subdate"  required #deadline="ngModel" class="form-control" /> 
+         </div>
+          <label for="exampleInputEmail1" class="form-label">Assignment Status : </label>
+         <div class="form-control"> 
+           <input type="radio" name="Status" value="Completed" [(ngModel)]="studentData.status" required/> Completed
+           <input type="radio" name="Status" value="Pending" [(ngModel)]="studentData.status" required/> Pending 
+         </div>
+         
+       </div>
+        <div >
+         <button type="submit"  class="btn btn-primary" data-bs-dismiss="modal" >Submit Assignment</button>
+        </div>
+       
+    </form>
+    
+</div>

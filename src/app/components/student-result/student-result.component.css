@@ -1,0 +1,42 @@
+body, html {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .bg-img {
+   
+     background-image: url('/assets/studenthome.jpg'); 
+    min-height: 790px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  .container {
+    position:relative;
+    right: 0;
+    margin: 40px;
+    max-width: 400px;
+    padding: 30px;
+    background-color: transparent;
+  }
+   .container1 {
+    position:absolute;
+    right: 0;
+    margin: 40px;
+    max-width: 600px;
+    padding: 30px;
+    background-color: transparent;
+  }
+  
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    background: rgb(3, 3, 3);
+  }
+  .labelcolor{ font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: medium; color: red;}
+ 
